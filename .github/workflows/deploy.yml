@@ -1,58 +1,76 @@
-name: Deploy to GitHub Pages
+# ============================================================================
+# WORKFLOW DESABILITADO - Usar deploy manual via branch
+# ============================================================================
+#
+# MOTIVO: Conta com problema de billing no GitHub Actions
+#
+# COMO HABILITAR O GITHUB PAGES SEM ESTE WORKFLOW:
+# 1. Vá em Settings → Pages no seu repositório do GitHub
+# 2. Em "Build and deployment":
+#    - Source: Selecione "Deploy from a branch"
+#    - Branch: Selecione "main" e "/ (root)"
+# 3. Clique em Save
+#
+# O site será publicado automaticamente a cada push na branch main
+# URL: https://seu-usuario.github.io/nome-do-repositorio/
+#
+# ============================================================================
 
-on:
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
+# name: Deploy to GitHub Pages
 
-jobs:
-  deploy:
-    runs-on: ubuntu-latest
+# on:
+#   push:
+#     branches: [ main ]
+#   pull_request:
+#     branches: [ main ]
+
+# jobs:
+#   deploy:
+#     runs-on: ubuntu-latest
     
-    steps:
-    - name: Checkout
-      uses: actions/checkout@v4
+#     steps:
+#     - name: Checkout
+#       uses: actions/checkout@v4
     
-    - name: Validate HTML
-      run: |
-        echo "Validando arquivos HTML..."
-        # Verificar se arquivos existem
-        test -f login.html || (echo "login.html não encontrado" && exit 1)
-        test -f index.html || (echo "index.html não encontrado" && exit 1)
-        echo "Arquivos HTML encontrados ✓"
+#     - name: Validate HTML
+#       run: |
+#         echo "Validando arquivos HTML..."
+#         # Verificar se arquivos existem
+#         test -f login.html || (echo "login.html não encontrado" && exit 1)
+#         test -f index.html || (echo "index.html não encontrado" && exit 1)
+#         echo "Arquivos HTML encontrados ✓"
     
-    - name: Validate CSS
-      run: |
-        echo "Validando arquivos CSS..."
-        test -f css/styles.css || (echo "css/styles.css não encontrado" && exit 1)
-        echo "Arquivos CSS encontrados ✓"
+#     - name: Validate CSS
+#       run: |
+#         echo "Validando arquivos CSS..."
+#         test -f css/styles.css || (echo "css/styles.css não encontrado" && exit 1)
+#         echo "Arquivos CSS encontrados ✓"
     
-    - name: Validate JavaScript
-      run: |
-        echo "Validando arquivos JavaScript..."
-        test -f js/script.js || (echo "js/script.js não encontrado" && exit 1)
-        echo "Arquivos JavaScript encontrados ✓"
+#     - name: Validate JavaScript
+#       run: |
+#         echo "Validando arquivos JavaScript..."
+#         test -f js/script.js || (echo "js/script.js não encontrado" && exit 1)
+#         echo "Arquivos JavaScript encontrados ✓"
     
-    - name: Setup Pages
-      uses: actions/configure-pages@v4
+#     - name: Setup Pages
+#       uses: actions/configure-pages@v4
       
-    - name: Upload artifact
-      uses: actions/upload-pages-artifact@v3
-      with:
-        path: '.'
+#     - name: Upload artifact
+#       uses: actions/upload-pages-artifact@v3
+#       with:
+#         path: '.'
         
-    - name: Deploy to GitHub Pages
-      id: deployment
-      uses: actions/deploy-pages@v4
+#     - name: Deploy to GitHub Pages
+#       id: deployment
+#       uses: actions/deploy-pages@v4
 
-# Configurar permissões para GitHub Pages
-permissions:
-  contents: read
-  pages: write
-  id-token: write
+# # Configurar permissões para GitHub Pages
+# permissions:
+#   contents: read
+#   pages: write
+#   id-token: write
 
-# Permitir apenas um deploy por vez
-concurrency:
-  group: "pages"
-  cancel-in-progress: false
+# # Permitir apenas um deploy por vez
+# concurrency:
+#   group: "pages"
+#   cancel-in-progress: false
