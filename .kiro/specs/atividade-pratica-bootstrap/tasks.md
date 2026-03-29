@@ -6,7 +6,7 @@ Este plano implementa uma aplicação web responsiva com Bootstrap 5 para projet
 
 ## Tarefas
 
-- [ ] 1. Configurar estrutura do projeto e repositório GitHub
+- [-] 1. Configurar estrutura do projeto e repositório GitHub
   - Criar estrutura de diretórios (css/, js/, assets/imagens/)
   - Inicializar repositório Git local
   - Criar repositório no GitHub

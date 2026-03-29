@@ -1,0 +1,78 @@
+/* ===== VARIÁVEIS CSS ===== */
+:root {
+    --cor-primaria: #0d6efd;
+    --cor-secundaria: #6c757d;
+    --cor-sucesso: #198754;
+    --fonte-principal: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* ===== ESTILOS GLOBAIS ===== */
+body {
+    font-family: var(--fonte-principal);
+}
+
+/* ===== PÁGINA DE LOGIN ===== */
+.login-container {
+    min-height: 100vh;
+}
+
+.login-card {
+    border: none;
+    border-radius: 10px;
+}
+
+/* ===== LANDING PAGE ===== */
+.hero-section {
+    padding-top: 100px;
+    min-height: 100vh;
+}
+
+/* ===== COMPONENTES REUTILIZÁVEIS ===== */
+.card-personalizado {
+    transition: transform 0.3s ease;
+}
+
+.card-personalizado:hover {
+    transform: translateY(-5px);
+}
+
+.botao-social {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 10px;
+    transition: all 0.3s ease;
+}
+
+.badge-habilidade {
+    font-size: 0.9rem;
+    padding: 8px 12px;
+    margin: 4px;
+}
+
+/* ===== RESPONSIVIDADE PERSONALIZADA ===== */
+@media (max-width: 767px) {
+    .hero-section {
+        padding-top: 80px;
+        text-align: center;
+    }
+    
+    .navbar-brand {
+        font-size: 1.1rem;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+    .hero-section {
+        padding-top: 90px;
+    }
+}
+
+@media (min-width: 992px) {
+    .hero-section {
+        padding-top: 100px;
+    }
+}
