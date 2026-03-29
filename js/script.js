@@ -22,7 +22,7 @@ function handleLogin(event) {
     
     // Simula processamento e redireciona
     setTimeout(() => {
-        window.location.href = 'index.html';
+        window.location.href = 'portfolio.html';
     }, CONFIG.tempoRedirecionamento);
 }
 
