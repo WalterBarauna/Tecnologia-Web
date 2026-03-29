@@ -1,129 +1,188 @@
-# 📘 Instruções para Configuração do GitHub e GitHub Pages
+# Instruções para Configurar GitHub Pages
 
-## ✅ Status Atual do Projeto
+Este documento fornece instruções passo a passo para configurar o GitHub Pages e fazer o deploy automático do seu projeto Bootstrap.
 
-A estrutura do projeto já está configurada:
-- ✅ Diretórios criados (css/, js/, assets/imagens/)
-- ✅ Repositório Git local inicializado
-- ✅ Arquivos HTML, CSS e JavaScript criados
+## Pré-requisitos
 
-## 🚀 Próximos Passos
+- Conta no GitHub
+- Repositório Git local inicializado
+- Todos os arquivos do projeto commitados
 
-### 1️⃣ Criar Repositório no GitHub
+## Passo 1: Criar Repositório no GitHub
 
 1. Acesse [GitHub](https://github.com) e faça login
-2. Clique no botão **"+"** no canto superior direito
-3. Selecione **"New repository"**
-4. Configure o repositório:
-   - **Repository name**: `Tecnologia-Web` (ou outro nome de sua preferência)
-   - **Description**: "Projeto acadêmico - Aplicação web responsiva com Bootstrap 5"
-   - **Visibility**: Público (necessário para GitHub Pages gratuito)
-   - ⚠️ **NÃO** marque "Initialize this repository with a README" (já temos arquivos locais)
-5. Clique em **"Create repository"**
+2. Clique no botão **"+"** no canto superior direito e selecione **"New repository"**
+3. Configure o repositório:
+   - **Repository name**: `projeto-bootstrap` (ou outro nome de sua preferência)
+   - **Description**: "Projeto acadêmico de Bootstrap 5 - Currículo Online"
+   - **Visibility**: Selecione **Public** (necessário para GitHub Pages gratuito)
+   - **NÃO** marque "Initialize this repository with a README" (já temos arquivos locais)
+4. Clique em **"Create repository"**
 
-### 2️⃣ Conectar Repositório Local ao GitHub
+## Passo 2: Conectar Repositório Local ao GitHub
 
-Após criar o repositório no GitHub, execute os seguintes comandos no terminal:
+Após criar o repositório, o GitHub mostrará instruções. Execute os seguintes comandos no terminal (na pasta do projeto):
 
 ```bash
-# Adicionar o repositório remoto
-git remote add origin https://github.com/SEU-USUARIO/Tecnologia-Web.git
+# Se ainda não inicializou o Git localmente
+git init
 
-# Verificar se foi adicionado corretamente
-git remote -v
-
-# Adicionar todos os arquivos ao staging
+# Adicionar todos os arquivos
 git add .
 
 # Fazer o primeiro commit
-git commit -m "feat: estrutura inicial do projeto com Bootstrap"
+git commit -m "Initial commit: Projeto Bootstrap completo"
 
-# Enviar para o GitHub (primeira vez)
+# Adicionar o repositório remoto (substitua SEU-USUARIO pelo seu nome de usuário)
+git remote add origin https://github.com/SEU-USUARIO/projeto-bootstrap.git
+
+# Renomear a branch para main (se necessário)
+git branch -M main
+
+# Fazer push para o GitHub
 git push -u origin main
 ```
 
-⚠️ **Importante**: Substitua `SEU-USUARIO` pelo seu nome de usuário do GitHub!
+## Passo 3: Configurar GitHub Pages
 
-### 3️⃣ Configurar GitHub Pages
+1. No seu repositório no GitHub, clique na aba **"Settings"** (Configurações)
+2. No menu lateral esquerdo, clique em **"Pages"** (na seção "Code and automation")
+3. Na seção **"Build and deployment"**:
+   - **Source**: Selecione **"GitHub Actions"**
+   - Não é necessário selecionar branch manualmente, o workflow fará isso automaticamente
+4. Clique em **"Save"** (se houver botão de salvar)
 
-Após fazer o push dos arquivos:
+## Passo 4: Verificar o Deploy
 
-1. No seu repositório no GitHub, clique em **"Settings"** (Configurações)
-2. No menu lateral esquerdo, clique em **"Pages"**
-3. Em **"Source"** (Fonte):
-   - Selecione **"Deploy from a branch"**
-   - Branch: **main**
-   - Folder: **/ (root)**
-4. Clique em **"Save"**
-5. Aguarde alguns minutos (geralmente 1-3 minutos)
-6. A URL do seu site será exibida: `https://SEU-USUARIO.github.io/Tecnologia-Web/`
+1. Vá para a aba **"Actions"** no seu repositório
+2. Você verá o workflow **"Deploy to GitHub Pages"** em execução
+3. Aguarde até que o workflow seja concluído (ícone verde ✓)
+4. Se houver erro (ícone vermelho ✗), clique no workflow para ver os logs e identificar o problema
 
-### 4️⃣ Acessar o Site Publicado
+## Passo 5: Acessar o Site Publicado
 
-Após a publicação, você pode acessar:
+Após o deploy ser concluído com sucesso:
 
-- **Página de Login**: `https://SEU-USUARIO.github.io/Tecnologia-Web/login.html`
-- **Landing Page**: `https://SEU-USUARIO.github.io/Tecnologia-Web/index.html`
+1. Volte para **Settings → Pages**
+2. No topo da página, você verá uma mensagem:
+   ```
+   Your site is live at https://SEU-USUARIO.github.io/projeto-bootstrap/
+   ```
+3. Clique no link ou copie a URL
+4. Acesse a URL no navegador
 
-## 🔄 Atualizações Futuras
+**Importante**: A página inicial será `login.html`. Para acessá-la diretamente, use:
+```
+https://SEU-USUARIO.github.io/projeto-bootstrap/login.html
+```
 
-Sempre que fizer alterações no projeto:
+## Passo 6: Configurar Página Inicial (Opcional)
+
+Se você quiser que `login.html` seja a página inicial padrão, você tem duas opções:
+
+### Opção 1: Renomear login.html para index.html
+```bash
+# Renomear o arquivo atual index.html
+mv index.html curriculo.html
+
+# Renomear login.html para index.html
+mv login.html index.html
+
+# Atualizar o redirecionamento no JavaScript (js/script.js)
+# Mudar de: window.location.href = 'index.html';
+# Para: window.location.href = 'curriculo.html';
+
+# Commit e push
+git add .
+git commit -m "Configurar login.html como página inicial"
+git push
+```
+
+### Opção 2: Criar um index.html que redireciona
+```html
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="refresh" content="0; url=login.html">
+    <title>Redirecionando...</title>
+</head>
+<body>
+    <p>Redirecionando para a página de login...</p>
+    <script>window.location.href = 'login.html';</script>
+</body>
+</html>
+```
+
+## Atualizações Futuras
+
+Sempre que você fizer alterações no projeto:
 
 ```bash
 # Adicionar arquivos modificados
 git add .
 
 # Fazer commit com mensagem descritiva
-git commit -m "descrição das alterações"
+git commit -m "Descrição das alterações"
 
 # Enviar para o GitHub
-git push origin main
+git push
 ```
 
-O GitHub Pages atualizará automaticamente em alguns minutos!
+O GitHub Actions automaticamente executará o workflow e atualizará o site em alguns minutos.
 
-## 📋 Checklist de Verificação
+## Solução de Problemas
 
-Marque conforme for completando:
+### Erro: "login.html não encontrado"
+- Verifique se o arquivo existe na raiz do projeto
+- Certifique-se de que fez commit do arquivo antes do push
+
+### Erro: "css/styles.css não encontrado"
+- Verifique se a pasta `css` existe
+- Certifique-se de que o arquivo `styles.css` está dentro da pasta `css`
+
+### Erro: "js/script.js não encontrado"
+- Verifique se a pasta `js` existe
+- Certifique-se de que o arquivo `script.js` está dentro da pasta `js`
+
+### Site não atualiza após push
+- Aguarde 2-3 minutos para o deploy ser concluído
+- Limpe o cache do navegador (Ctrl + Shift + R ou Cmd + Shift + R)
+- Verifique se o workflow foi executado com sucesso na aba Actions
+
+### Erro 404 ao acessar o site
+- Verifique se o GitHub Pages está ativado em Settings → Pages
+- Confirme que a URL está correta: `https://SEU-USUARIO.github.io/NOME-DO-REPOSITORIO/`
+- Aguarde alguns minutos após o primeiro deploy
+
+## Verificação Final
+
+Use este checklist para confirmar que tudo está funcionando:
 
 - [ ] Repositório criado no GitHub
-- [ ] Repositório local conectado ao remoto
-- [ ] Arquivos enviados para o GitHub (git push)
-- [ ] GitHub Pages configurado nas Settings
+- [ ] Código local enviado para o GitHub (git push)
+- [ ] GitHub Pages configurado com source "GitHub Actions"
+- [ ] Workflow executado com sucesso (ícone verde na aba Actions)
 - [ ] Site acessível via URL do GitHub Pages
-- [ ] Página de login funcionando
-- [ ] Landing page funcionando
-- [ ] Responsividade testada em diferentes dispositivos
+- [ ] Página de login carrega corretamente
+- [ ] Redirecionamento para o currículo funciona
+- [ ] Layout responsivo funciona em diferentes dispositivos
+- [ ] Links sociais abrem em nova aba
 
-## 🆘 Problemas Comuns
+## Recursos Adicionais
 
-### Erro: "remote origin already exists"
-```bash
-# Remover o remote existente
-git remote remove origin
+- [Documentação oficial do GitHub Pages](https://docs.github.com/pt/pages)
+- [Documentação do GitHub Actions](https://docs.github.com/pt/actions)
+- [Guia de Markdown do GitHub](https://docs.github.com/pt/get-started/writing-on-github)
 
-# Adicionar novamente
-git remote add origin https://github.com/SEU-USUARIO/Tecnologia-Web.git
-```
+## Suporte
 
-### Erro: "failed to push some refs"
-```bash
-# Forçar o push (use com cuidado!)
-git push -u origin main --force
-```
-
-### Site não carrega no GitHub Pages
-- Aguarde 5-10 minutos após a configuração
-- Verifique se o repositório é público
-- Confirme que os arquivos estão na branch main
-- Limpe o cache do navegador (Ctrl + F5)
-
-## 📚 Recursos Adicionais
-
-- [Documentação GitHub Pages](https://docs.github.com/pt/pages)
-- [Guia Git Básico](https://git-scm.com/book/pt-br/v2)
-- [Bootstrap 5 Documentação](https://getbootstrap.com/docs/5.3/)
+Se encontrar problemas:
+1. Verifique os logs do workflow na aba Actions
+2. Consulte a documentação oficial do GitHub
+3. Peça ajuda ao professor ou colegas de turma
 
 ---
 
-**Desenvolvido para a disciplina de Tecnologia Web**
+**Última atualização**: 2024
+**Projeto**: Atividade Prática Bootstrap - Tecnologia Web

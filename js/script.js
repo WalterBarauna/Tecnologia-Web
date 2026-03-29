@@ -17,7 +17,6 @@ function handleLogin(event) {
     
     // Feedback visual
     const button = event.target.querySelector('button[type="submit"]');
-    const textoOriginal = button.innerHTML;
     button.innerHTML = '<span class="spinner-border spinner-border-sm" role="status"></span> Entrando...';
     button.disabled = true;
     
@@ -62,17 +61,30 @@ function mostrarErros(erros) {
 
 // ===== FUNÇÕES DA LANDING PAGE =====
 function inicializarAnimacoes() {
-    // Scroll suave para links âncora
+    // Scroll suave para links âncora com offset para navbar fixa
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
             const target = document.querySelector(this.getAttribute('href'));
             if (target) {
-                const offsetTop = target.offsetTop - 70; // Offset para navbar fixa
+                // Calcular offset dinâmico baseado na altura da navbar
+                const navbar = document.querySelector('.navbar');
+                const navbarHeight = navbar ? navbar.offsetHeight : 70;
+                const offsetTop = target.offsetTop - navbarHeight;
+                
                 window.scrollTo({
                     top: offsetTop,
                     behavior: 'smooth'
                 });
+                
+                // Fechar navbar colapsável em mobile após clicar no link
+                const navbarCollapse = document.querySelector('.navbar-collapse');
+                if (navbarCollapse && navbarCollapse.classList.contains('show')) {
+                    const bsCollapse = bootstrap.Collapse.getInstance(navbarCollapse);
+                    if (bsCollapse) {
+                        bsCollapse.hide();
+                    }
+                }
             }
         });
     });
@@ -88,6 +100,49 @@ function configurarLinksExternos() {
     });
 }
 
+function atualizarNavbarAtiva() {
+    // Adicionar indicador de seção ativa na navegação
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
+    
+    if (sections.length === 0 || navLinks.length === 0) return;
+    
+    const atualizarAtivo = () => {
+        let current = '';
+        const navbar = document.querySelector('.navbar');
+        const navbarHeight = navbar ? navbar.offsetHeight : 70;
+        const scrollPosition = window.pageYOffset + navbarHeight + 100;
+        
+        // Determinar qual seção está visível
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.offsetHeight;
+            
+            if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                current = section.getAttribute('id');
+            }
+        });
+        
+        // Se estiver no topo da página, ativar o primeiro link (home)
+        if (window.pageYOffset < 100) {
+            current = 'home';
+        }
+        
+        // Atualizar classes active nos links
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            const href = link.getAttribute('href');
+            if (href === `#${current}`) {
+                link.classList.add('active');
+            }
+        });
+    };
+    
+    // Executar ao carregar e ao fazer scroll
+    atualizarAtivo();
+    window.addEventListener('scroll', atualizarAtivo);
+}
+
 // ===== INICIALIZAÇÃO =====
 document.addEventListener('DOMContentLoaded', function() {
     // Verificar se estamos na página de login
@@ -100,6 +155,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (document.querySelector('.hero-section')) {
         inicializarAnimacoes();
         configurarLinksExternos();
+        atualizarNavbarAtiva();
     }
     
     // Verificar se Bootstrap carregou corretamente

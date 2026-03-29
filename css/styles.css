@@ -1,78 +1,1388 @@
 /* ===== VARIÁVEIS CSS ===== */
 :root {
+    /* Paleta de Cores Principal */
     --cor-primaria: #0d6efd;
     --cor-secundaria: #6c757d;
     --cor-sucesso: #198754;
+    --cor-info: #0dcaf0;
+    --cor-warning: #ffc107;
+    --cor-danger: #dc3545;
+    --cor-light: #f8f9fa;
+    --cor-dark: #212529;
+    
+    /* Cores de Fundo */
+    --bg-primaria: #0d6efd;
+    --bg-secundaria: #6c757d;
+    --bg-light: #f8f9fa;
+    --bg-dark: #212529;
+    --bg-white: #ffffff;
+    
+    /* Cores de Texto */
+    --texto-primario: #212529;
+    --texto-secundario: #6c757d;
+    --texto-muted: #6c757d;
+    --texto-white: #ffffff;
+    
+    /* Tipografia */
     --fonte-principal: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --fonte-tamanho-base: 1rem;
+    --fonte-tamanho-pequeno: 0.875rem;
+    --fonte-tamanho-grande: 1.25rem;
+    --fonte-peso-normal: 400;
+    --fonte-peso-medio: 500;
+    --fonte-peso-bold: 700;
+    --linha-altura: 1.6;
+    
+    /* Espaçamento */
+    --espacamento-xs: 0.25rem;
+    --espacamento-sm: 0.5rem;
+    --espacamento-md: 1rem;
+    --espacamento-lg: 1.5rem;
+    --espacamento-xl: 3rem;
+    
+    /* Sombras */
+    --sombra-pequena: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+    --sombra-media: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+    --sombra-grande: 0 1rem 3rem rgba(0, 0, 0, 0.175);
+    
+    /* Bordas */
+    --borda-radius-pequeno: 0.25rem;
+    --borda-radius-medio: 0.5rem;
+    --borda-radius-grande: 1rem;
+    --borda-radius-circular: 50%;
+    
+    /* Transições */
+    --transicao-rapida: 0.15s ease-in-out;
+    --transicao-normal: 0.3s ease-in-out;
+    --transicao-lenta: 0.6s ease-in-out;
+    
+    /* Z-index */
+    --z-navbar: 1030;
+    --z-modal: 1050;
+    --z-tooltip: 1070;
 }
 
 /* ===== ESTILOS GLOBAIS ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
     font-family: var(--fonte-principal);
+    font-size: var(--fonte-tamanho-base);
+    line-height: var(--linha-altura);
+    color: var(--texto-primario);
+    background-color: var(--bg-white);
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: var(--fonte-peso-bold);
+    line-height: 1.2;
+    margin-bottom: var(--espacamento-md);
+}
+
+p {
+    margin-bottom: var(--espacamento-md);
+}
+
+a {
+    text-decoration: none;
+    transition: all var(--transicao-normal);
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+section {
+    position: relative;
+    scroll-margin-top: 70px;
 }
 
 /* ===== PÁGINA DE LOGIN ===== */
 .login-container {
     min-height: 100vh;
+    background: linear-gradient(135deg, var(--cor-primaria) 0%, #0056b3 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .login-card {
     border: none;
-    border-radius: 10px;
+    border-radius: var(--borda-radius-grande);
+    box-shadow: var(--sombra-grande);
+    transition: all var(--transicao-normal);
+    background-color: var(--bg-white);
+}
+
+.login-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.2);
+}
+
+.login-card .card-body {
+    padding: var(--espacamento-xl);
+}
+
+.login-card .card-title {
+    color: var(--cor-primaria);
+    font-weight: var(--fonte-peso-bold);
+}
+
+.login-card .form-control {
+    border-radius: var(--borda-radius-pequeno);
+    padding: var(--espacamento-md);
+    border: 1px solid #dee2e6;
+    transition: all var(--transicao-normal);
+}
+
+.login-card .form-control:focus {
+    border-color: var(--cor-primaria);
+    box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+}
+
+.login-card .btn-primary {
+    background-color: var(--cor-primaria);
+    border: none;
+    padding: var(--espacamento-md);
+    font-weight: var(--fonte-peso-bold);
+    transition: all var(--transicao-normal);
+}
+
+.login-card .btn-primary:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
 }
 
 /* ===== LANDING PAGE ===== */
 .hero-section {
     padding-top: 100px;
     min-height: 100vh;
+    background: linear-gradient(135deg, var(--cor-primaria) 0%, #0056b3 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="2" fill="rgba(255,255,255,0.1)"/></svg>');
+    opacity: 0.3;
+    pointer-events: none;
+}
+
+.hero-section .container {
+    position: relative;
+    z-index: 1;
+}
+
+.hero-section h1 {
+    animation: fadeInDown var(--transicao-lenta);
+}
+
+.hero-section p {
+    animation: fadeInUp var(--transicao-lenta);
+    animation-delay: 0.2s;
+    animation-fill-mode: both;
+}
+
+.hero-section .btn {
+    animation: fadeInUp var(--transicao-lenta);
+    animation-delay: 0.4s;
+    animation-fill-mode: both;
+}
+
+/* Seções de Conteúdo */
+section:not(.hero-section) {
+    padding: var(--espacamento-xl) 0;
+}
+
+section h2 {
+    position: relative;
+    display: inline-block;
+    padding-bottom: var(--espacamento-md);
+}
+
+section h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--cor-primaria), var(--cor-info));
+    border-radius: var(--borda-radius-pequeno);
+}
+
+/* Background alternado para seções */
+section:nth-child(even) {
+    background-color: var(--bg-light);
+}
+
+section:nth-child(odd) {
+    background-color: var(--bg-white);
+}
+
+/* Navbar fixa e indicador de seção ativa */
+.navbar {
+    transition: all var(--transicao-normal);
+    box-shadow: var(--sombra-pequena);
+    z-index: var(--z-navbar);
+}
+
+.navbar-brand {
+    font-weight: var(--fonte-peso-bold);
+    font-size: 1.5rem;
+    transition: all var(--transicao-normal);
+}
+
+.navbar-brand:hover {
+    transform: scale(1.05);
+}
+
+.navbar-nav .nav-link {
+    position: relative;
+    transition: all var(--transicao-normal);
+    padding: var(--espacamento-sm) var(--espacamento-md);
+    margin: 0 var(--espacamento-xs);
+    border-radius: var(--borda-radius-pequeno);
+}
+
+.navbar-nav .nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.navbar-nav .nav-link.active {
+    font-weight: var(--fonte-peso-bold);
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.navbar-nav .nav-link.active::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    height: 2px;
+    background-color: currentColor;
+}
+
+/* Footer */
+footer {
+    background-color: var(--bg-dark);
+    color: var(--texto-white);
+    padding: var(--espacamento-xl) 0;
+}
+
+footer a {
+    color: var(--texto-white);
+    transition: all var(--transicao-normal);
+}
+
+footer a:hover {
+    color: var(--cor-info);
+    text-decoration: underline;
+}
+
+/* Melhorar navbar colapsável em mobile */
+@media (max-width: 991px) {
+    .navbar-collapse {
+        background-color: rgba(13, 110, 253, 0.95);
+        padding: 1rem;
+        border-radius: 0.5rem;
+        margin-top: 0.5rem;
+    }
+    
+    .navbar-nav .nav-link {
+        padding: 0.75rem 1rem;
+        border-radius: 0.25rem;
+        margin: 0.25rem 0;
+    }
+    
+    .navbar-nav .nav-link.active {
+        background-color: rgba(255, 255, 255, 0.2);
+    }
+    
+    .navbar-nav .nav-link.active::after {
+        display: none;
+    }
+    
+    .navbar-nav .nav-link:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+    }
 }
 
 /* ===== COMPONENTES REUTILIZÁVEIS ===== */
+
+/* Cards Personalizados */
 .card-personalizado {
-    transition: transform 0.3s ease;
+    border: none;
+    border-radius: var(--borda-radius-medio);
+    box-shadow: var(--sombra-pequena);
+    transition: all var(--transicao-normal);
+    overflow: hidden;
+    background-color: var(--bg-white);
 }
 
 .card-personalizado:hover {
     transform: translateY(-5px);
+    box-shadow: var(--sombra-media);
 }
 
+.card-personalizado .card-body {
+    padding: var(--espacamento-lg);
+}
+
+.card-personalizado .card-title {
+    color: var(--cor-primaria);
+    font-weight: var(--fonte-peso-bold);
+    margin-bottom: var(--espacamento-md);
+    font-size: var(--fonte-tamanho-grande);
+}
+
+.card-personalizado .card-title i {
+    color: var(--cor-primaria);
+}
+
+/* Botões Personalizados */
+.btn {
+    border-radius: var(--borda-radius-pequeno);
+    padding: var(--espacamento-sm) var(--espacamento-lg);
+    font-weight: var(--fonte-peso-medio);
+    transition: all var(--transicao-normal);
+    border: none;
+    cursor: pointer;
+    display: inline-block;
+    text-align: center;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--sombra-pequena);
+}
+
+.btn:active {
+    transform: translateY(0);
+}
+
+.btn-lg {
+    padding: var(--espacamento-md) var(--espacamento-xl);
+    font-size: var(--fonte-tamanho-grande);
+}
+
+/* Botões Sociais */
 .botao-social {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    border-radius: var(--borda-radius-circular);
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    margin: 0 10px;
-    transition: all 0.3s ease;
+    text-decoration: none;
+    font-size: 1.5rem;
+    transition: all var(--transicao-normal);
+    box-shadow: var(--sombra-pequena);
+    position: relative;
+    overflow: hidden;
 }
 
+/* Cores específicas das redes sociais */
+.botao-social.email {
+    background-color: #ea4335 !important;
+}
+
+.botao-social.linkedin {
+    background-color: #0077b5 !important;
+}
+
+.botao-social.instagram {
+    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%) !important;
+}
+
+/* Efeitos hover com transições */
+.botao-social:hover {
+    transform: translateY(-5px) scale(1.1);
+    box-shadow: var(--sombra-media);
+}
+
+.botao-social.email:hover {
+    background-color: #d33426 !important;
+}
+
+.botao-social.linkedin:hover {
+    background-color: #005885 !important;
+}
+
+.botao-social.instagram:hover {
+    background: linear-gradient(45deg, #d87e2c 0%, #c55532 25%, #b91f38 50%, #a81c57 75%, #9a1475 100%) !important;
+}
+
+/* Animação de pulso ao focar */
+.botao-social:focus {
+    outline: none;
+    animation: pulse 0.5s ease-in-out;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.15);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Badges de Habilidades */
 .badge-habilidade {
     font-size: 0.9rem;
-    padding: 8px 12px;
-    margin: 4px;
+    padding: var(--espacamento-sm) var(--espacamento-md);
+    margin: var(--espacamento-xs);
+    border-radius: var(--borda-radius-grande);
+    font-weight: var(--fonte-peso-medio);
+    transition: all var(--transicao-normal);
+    display: inline-block;
+}
+
+.badge-habilidade:hover {
+    transform: scale(1.05);
+    box-shadow: var(--sombra-pequena);
+}
+
+/* Animações e Transições */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.fade-in {
+    animation: fadeIn var(--transicao-lenta);
+}
+
+.fade-in-up {
+    animation: fadeInUp var(--transicao-lenta);
+}
+
+.fade-in-down {
+    animation: fadeInDown var(--transicao-lenta);
+}
+
+.slide-in-left {
+    animation: slideInLeft var(--transicao-lenta);
+}
+
+.slide-in-right {
+    animation: slideInRight var(--transicao-lenta);
 }
 
 /* ===== RESPONSIVIDADE PERSONALIZADA ===== */
-@media (max-width: 767px) {
+
+/* Extra Small Devices (Smartphones em modo retrato, <576px) */
+@media (max-width: 575px) {
+    /* Tipografia otimizada para mobile */
+    body {
+        font-size: 0.9rem;
+    }
+    
+    h1, .display-4 {
+        font-size: 1.75rem !important;
+        line-height: 1.3;
+    }
+    
+    h2 {
+        font-size: 1.5rem;
+    }
+    
+    h3, h4 {
+        font-size: 1.25rem;
+    }
+    
+    .lead {
+        font-size: 1rem;
+    }
+    
+    /* Espaçamento reduzido para mobile */
+    section {
+        padding: var(--espacamento-lg) 0 !important;
+    }
+    
+    .hero-section {
+        padding-top: 70px !important;
+        min-height: auto !important;
+    }
+    
+    .container {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+    
+    /* Botões otimizados */
+    .btn-lg {
+        padding: 0.75rem 1.25rem;
+        font-size: 1rem;
+        width: 100%;
+    }
+    
+    .btn {
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+    }
+    
+    /* Cards com espaçamento reduzido */
+    .card-personalizado {
+        margin-bottom: 1rem;
+    }
+    
+    .card-body {
+        padding: 1rem;
+    }
+    
+    /* Badges menores */
+    .badge-habilidade {
+        font-size: 0.75rem;
+        padding: 0.35rem 0.65rem;
+        margin: 0.15rem;
+    }
+    
+    /* Botões sociais menores */
+    .botao-social {
+        width: 50px;
+        height: 50px;
+        font-size: 1.25rem;
+    }
+    
+    /* Navbar compacta */
+    .navbar-brand {
+        font-size: 1rem;
+    }
+    
+    .navbar {
+        padding: 0.5rem 1rem;
+    }
+}
+
+/* Small Devices (Smartphones em modo paisagem, ≥576px) */
+@media (min-width: 576px) and (max-width: 767px) {
+    /* Tipografia intermediária */
+    h1, .display-4 {
+        font-size: 2rem !important;
+    }
+    
+    h2 {
+        font-size: 1.75rem;
+    }
+    
+    /* Espaçamento moderado */
+    section {
+        padding: var(--espacamento-xl) 0;
+    }
+    
     .hero-section {
         padding-top: 80px;
+    }
+    
+    /* Botões com largura flexível */
+    .btn-lg {
+        width: auto;
+        min-width: 200px;
+    }
+    
+    /* Cards com melhor espaçamento */
+    .card-personalizado {
+        margin-bottom: 1.5rem;
+    }
+}
+
+/* Medium Devices (Tablets, ≥768px) */
+@media (min-width: 768px) and (max-width: 991px) {
+    /* Tipografia para tablet */
+    h1, .display-4 {
+        font-size: 2.5rem !important;
+    }
+    
+    h2 {
+        font-size: 2rem;
+    }
+    
+    /* Layout em duas colunas */
+    .hero-section {
+        padding-top: 90px;
+    }
+    
+    /* Espaçamento otimizado */
+    section {
+        padding: 3.5rem 0;
+    }
+    
+    .container {
+        max-width: 720px;
+    }
+    
+    /* Cards lado a lado */
+    .card-personalizado {
+        margin-bottom: 2rem;
+    }
+    
+    /* Botões sociais com espaçamento */
+    .botao-social {
+        width: 55px;
+        height: 55px;
+        margin: 0.75rem;
+    }
+    
+    /* Navbar com mais espaço */
+    .navbar-nav .nav-link {
+        padding: 0.5rem 0.75rem;
+        margin: 0 0.25rem;
+    }
+}
+
+/* Large Devices (Desktops, ≥992px) */
+@media (min-width: 992px) and (max-width: 1199px) {
+    /* Tipografia para desktop padrão */
+    h1, .display-4 {
+        font-size: 3rem !important;
+    }
+    
+    h2 {
+        font-size: 2.25rem;
+    }
+    
+    /* Layout horizontal completo */
+    .hero-section {
+        padding-top: 100px;
+        text-align: left;
+    }
+    
+    /* Espaçamento generoso */
+    section {
+        padding: 4rem 0;
+    }
+    
+    .container {
+        max-width: 960px;
+    }
+    
+    /* Navbar com hover effects */
+    .navbar-nav .nav-link {
+        padding: 0.5rem 1rem;
+        margin: 0 0.25rem;
+        position: relative;
+    }
+    
+    .navbar-nav .nav-link::before {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        width: 0;
+        height: 2px;
+        background-color: currentColor;
+        transition: all var(--transicao-normal);
+        transform: translateX(-50%);
+    }
+    
+    .navbar-nav .nav-link:hover::before,
+    .navbar-nav .nav-link.active::before {
+        width: 80%;
+    }
+    
+    /* Cards com hover mais pronunciado */
+    .card-personalizado:hover {
+        transform: translateY(-8px);
+    }
+}
+
+/* Extra Large Devices (Desktops grandes, ≥1200px) */
+@media (min-width: 1200px) {
+    /* Tipografia máxima */
+    h1, .display-4 {
+        font-size: 3.5rem !important;
+    }
+    
+    h2 {
+        font-size: 2.5rem;
+    }
+    
+    /* Container com largura máxima */
+    .container {
+        max-width: 1140px;
+    }
+    
+    /* Espaçamento máximo */
+    section {
+        padding: 5rem 0;
+    }
+    
+    .hero-section {
+        padding-top: 120px;
+    }
+    
+    /* Botões sociais maiores */
+    .botao-social {
+        width: 60px;
+        height: 60px;
+        font-size: 1.5rem;
+    }
+    
+    /* Cards com espaçamento amplo */
+    .card-body {
+        padding: 2rem;
+    }
+    
+    /* Badges maiores */
+    .badge-habilidade {
+        font-size: 1rem;
+        padding: 0.6rem 1.2rem;
+    }
+}
+
+/* XXL Devices (Telas muito grandes, ≥1400px) */
+@media (min-width: 1400px) {
+    .container {
+        max-width: 1320px;
+    }
+    
+    /* Espaçamento extra para telas grandes */
+    section {
+        padding: 6rem 0;
+    }
+    
+    h1, .display-4 {
+        font-size: 4rem !important;
+    }
+}
+
+/* ===== AJUSTES POR ORIENTAÇÃO ===== */
+
+/* Modo paisagem em dispositivos móveis */
+@media (max-height: 500px) and (orientation: landscape) {
+    .hero-section {
+        min-height: auto !important;
+        padding-top: 60px !important;
+        padding-bottom: 2rem !important;
+    }
+    
+    .navbar {
+        padding: 0.25rem 1rem;
+    }
+    
+    section {
+        padding: 2rem 0 !important;
+    }
+}
+
+/* Modo retrato em tablets */
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) {
+    .hero-section {
         text-align: center;
     }
     
-    .navbar-brand {
+    .hero-section .col-lg-6 {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+    
+    .d-flex.gap-3 {
+        justify-content: center;
+    }
+}
+
+/* ===== AJUSTES ESPECÍFICOS PARA COMPONENTES ===== */
+
+/* Navbar responsiva melhorada */
+@media (max-width: 991px) {
+    .navbar-collapse {
+        background-color: rgba(13, 110, 253, 0.95);
+        padding: 1rem;
+        border-radius: 0.5rem;
+        margin-top: 0.5rem;
+        box-shadow: var(--sombra-media);
+    }
+    
+    .navbar-nav .nav-link {
+        padding: 0.75rem 1rem;
+        border-radius: 0.25rem;
+        margin: 0.25rem 0;
+        transition: all var(--transicao-normal);
+    }
+    
+    .navbar-nav .nav-link.active {
+        background-color: rgba(255, 255, 255, 0.2);
+    }
+    
+    .navbar-nav .nav-link.active::after {
+        display: none;
+    }
+    
+    .navbar-nav .nav-link:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+        transform: translateX(5px);
+    }
+}
+
+/* Cards responsivos */
+@media (max-width: 767px) {
+    .card-personalizado {
+        margin-bottom: 1rem;
+    }
+    
+    .card-personalizado .card-title {
         font-size: 1.1rem;
     }
 }
 
-@media (min-width: 768px) and (max-width: 991px) {
-    .hero-section {
-        padding-top: 90px;
+@media (min-width: 768px) {
+    .card-personalizado {
+        height: 100%;
     }
 }
 
-@media (min-width: 992px) {
-    .hero-section {
-        padding-top: 100px;
+/* Botões responsivos */
+@media (max-width: 575px) {
+    .d-flex.gap-3 {
+        flex-direction: column;
+        gap: 0.75rem !important;
     }
+    
+    .btn-lg {
+        width: 100%;
+    }
+}
+
+@media (min-width: 576px) and (max-width: 767px) {
+    .d-flex.gap-3 {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .btn-lg {
+        flex: 1 1 auto;
+        min-width: 180px;
+    }
+}
+
+/* Badges responsivos */
+@media (max-width: 575px) {
+    .badge-habilidade {
+        font-size: 0.7rem;
+        padding: 0.3rem 0.6rem;
+        margin: 0.1rem;
+    }
+}
+
+@media (min-width: 576px) and (max-width: 991px) {
+    .badge-habilidade {
+        font-size: 0.85rem;
+        padding: 0.45rem 0.9rem;
+    }
+}
+
+/* Footer responsivo */
+@media (max-width: 575px) {
+    footer {
+        font-size: 0.85rem;
+        padding: 2rem 0;
+    }
+    
+    footer p {
+        margin-bottom: 0.5rem;
+    }
+}
+
+/* ===== OTIMIZAÇÕES DE PERFORMANCE ===== */
+
+/* Reduzir animações em dispositivos de baixa performance */
+@media (max-width: 767px) {
+    .card-personalizado:hover {
+        transform: translateY(-3px);
+    }
+    
+    .botao-social:hover {
+        transform: translateY(-3px) scale(1.05);
+    }
+}
+
+/* Otimizar transições para telas grandes */
+@media (min-width: 1200px) {
+    .card-personalizado,
+    .btn,
+    .botao-social,
+    .nav-link {
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+}
+
+/* ===== UTILITÁRIOS ADICIONAIS ===== */
+
+/* Gradientes de Texto */
+.text-gradient {
+    background: linear-gradient(45deg, var(--cor-primaria), var(--cor-info));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Bordas com Gradiente */
+.border-gradient {
+    border: 2px solid;
+    border-image: linear-gradient(45deg, var(--cor-primaria), var(--cor-info)) 1;
+}
+
+/* Sombras Customizadas */
+.shadow-sm-custom {
+    box-shadow: var(--sombra-pequena) !important;
+}
+
+.shadow-md-custom {
+    box-shadow: var(--sombra-media) !important;
+}
+
+.shadow-lg-custom {
+    box-shadow: var(--sombra-grande) !important;
+}
+
+/* Hover Effects */
+.hover-lift {
+    transition: all var(--transicao-normal);
+}
+
+.hover-lift:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--sombra-media);
+}
+
+.hover-scale {
+    transition: all var(--transicao-normal);
+}
+
+.hover-scale:hover {
+    transform: scale(1.05);
+}
+
+/* ===== ACESSIBILIDADE ===== */
+
+/* Screen Reader Only */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* Focus States para Navegação por Teclado */
+.btn:focus,
+.form-control:focus,
+.nav-link:focus,
+.botao-social:focus {
+    outline: 3px solid var(--cor-primaria);
+    outline-offset: 3px;
+    box-shadow: 0 0 0 4px rgba(13, 110, 253, 0.25);
+}
+
+/* Focus visível para links */
+a:focus {
+    outline: 2px solid var(--cor-primaria);
+    outline-offset: 2px;
+    text-decoration: underline;
+}
+
+/* Melhorar contraste para acessibilidade */
+.text-muted {
+    color: #6c757d !important; /* Garantir contraste mínimo WCAG AA */
+}
+
+/* Contraste melhorado para badges */
+.badge {
+    font-weight: var(--fonte-peso-bold);
+}
+
+/* Skip to Content Link */
+.skip-to-content {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: var(--cor-primaria);
+    color: var(--texto-white);
+    padding: var(--espacamento-sm) var(--espacamento-md);
+    text-decoration: none;
+    z-index: 100;
+    font-weight: var(--fonte-peso-bold);
+}
+
+.skip-to-content:focus {
+    top: 0;
+}
+
+/* Indicador visual para elementos interativos */
+button,
+a,
+input,
+select,
+textarea {
+    cursor: pointer;
+}
+
+button:disabled,
+input:disabled,
+select:disabled,
+textarea:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+/* Melhorar visibilidade de elementos focados em modo de alto contraste */
+@media (prefers-contrast: high) {
+    .btn,
+    .card,
+    .navbar {
+        border: 2px solid currentColor;
+    }
+    
+    .btn:focus,
+    a:focus {
+        outline-width: 4px;
+    }
+}
+
+/* Respeitar preferência de movimento reduzido */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* Modo escuro (respeitar preferência do sistema) */
+@media (prefers-color-scheme: dark) {
+    /* Nota: Bootstrap já gerencia o modo escuro, 
+       mas podemos adicionar ajustes personalizados se necessário */
+    .card-personalizado {
+        background-color: #212529;
+        color: #f8f9fa;
+    }
+}
+
+/* ===== IMPRESSÃO ===== */
+@media print {
+    /* Reset de cores para impressão */
+    * {
+        background: transparent !important;
+        color: #000 !important;
+        box-shadow: none !important;
+        text-shadow: none !important;
+    }
+    
+    /* Ocultar elementos não necessários na impressão */
+    .navbar,
+    .btn,
+    .botao-social,
+    footer,
+    .navbar-toggler,
+    .skip-to-content {
+        display: none !important;
+    }
+    
+    /* Ajustar layout para impressão */
+    body {
+        font-size: 12pt;
+        line-height: 1.5;
+        color: #000;
+        background: #fff;
+        margin: 0;
+        padding: 0;
+    }
+    
+    /* Hero section simplificada */
+    .hero-section {
+        background: none !important;
+        color: #000 !important;
+        padding: 1rem 0 !important;
+        min-height: auto !important;
+        page-break-after: avoid;
+    }
+    
+    .hero-section .display-4 {
+        font-size: 24pt !important;
+        margin-bottom: 0.5rem;
+    }
+    
+    .hero-section .lead {
+        font-size: 14pt;
+    }
+    
+    /* Seções com espaçamento reduzido */
+    section {
+        padding: 1rem 0 !important;
+        page-break-inside: avoid;
+    }
+    
+    /* Títulos de seção */
+    h1, h2, h3, h4, h5, h6 {
+        page-break-after: avoid;
+        page-break-inside: avoid;
+        font-weight: bold;
+    }
+    
+    h1 {
+        font-size: 20pt;
+    }
+    
+    h2 {
+        font-size: 16pt;
+        border-bottom: 2px solid #000;
+        padding-bottom: 0.25rem;
+        margin-top: 1rem;
+        margin-bottom: 0.75rem;
+    }
+    
+    h3, h4 {
+        font-size: 14pt;
+    }
+    
+    /* Evitar quebras de página dentro de elementos */
+    .card-personalizado,
+    .card,
+    ul,
+    ol,
+    p {
+        page-break-inside: avoid;
+    }
+    
+    /* Cards com bordas para impressão */
+    .card-personalizado,
+    .card {
+        border: 1px solid #000 !important;
+        box-shadow: none !important;
+        margin-bottom: 0.5rem;
+        padding: 0.5rem;
+    }
+    
+    .card-body {
+        padding: 0.5rem !important;
+    }
+    
+    .card-title {
+        font-size: 14pt;
+        font-weight: bold;
+        margin-bottom: 0.5rem;
+    }
+    
+    /* Ícones substituídos por texto */
+    .fas,
+    .fab,
+    .fa {
+        display: none;
+    }
+    
+    /* Mostrar URLs de links importantes */
+    a[href]:after {
+        content: " (" attr(href) ")";
+        font-size: 10pt;
+        color: #666;
+        font-style: italic;
+    }
+    
+    /* Não mostrar URLs para links internos e âncoras */
+    a[href^="#"]:after,
+    a[href^="javascript:"]:after,
+    a[href^="mailto:"]:after {
+        content: "";
+    }
+    
+    /* Badges em texto simples */
+    .badge-habilidade {
+        border: 1px solid #000;
+        padding: 0.25rem 0.5rem;
+        margin: 0.15rem;
+        display: inline-block;
+        background: #fff !important;
+        color: #000 !important;
+        font-size: 10pt;
+    }
+    
+    /* Container com largura total */
+    .container {
+        width: 100%;
+        max-width: 100%;
+        padding: 0;
+        margin: 0;
+    }
+    
+    /* Grid simplificado */
+    .row {
+        display: block;
+    }
+    
+    [class*="col-"] {
+        width: 100%;
+        float: none;
+        display: block;
+    }
+    
+    /* Listas com melhor formatação */
+    ul, ol {
+        margin-left: 1rem;
+    }
+    
+    li {
+        margin-bottom: 0.25rem;
+    }
+    
+    /* Parágrafos com espaçamento adequado */
+    p {
+        margin-bottom: 0.5rem;
+        orphans: 3;
+        widows: 3;
+    }
+    
+    /* Cabeçalho de impressão */
+    @page {
+        margin: 2cm;
+        size: A4;
+    }
+    
+    /* Primeira página com informações principais */
+    .hero-section {
+        border-bottom: 3px solid #000;
+        padding-bottom: 1rem !important;
+    }
+    
+    /* Rodapé de impressão */
+    footer {
+        display: block !important;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        border-top: 1px solid #000;
+        padding: 0.5rem 0;
+        font-size: 9pt;
+        text-align: center;
+    }
+    
+    /* Informações de contato destacadas */
+    #contato {
+        border: 2px solid #000;
+        padding: 1rem;
+        margin-top: 1rem;
+    }
+    
+    /* Garantir que imagens não quebrem o layout */
+    img {
+        max-width: 100%;
+        page-break-inside: avoid;
+    }
+    
+    /* Ocultar imagem de perfil decorativa */
+    .hero-section img,
+    .hero-section .fa-user {
+        display: none !important;
+    }
+}
+
+/* ===== ANIMAÇÕES DE LOADING ===== */
+.spinner-border-sm {
+    width: 1rem;
+    height: 1rem;
+    border-width: 0.15em;
+}
+
+/* Animação de Loading para Botões */
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.loading {
+    pointer-events: none;
+    opacity: 0.6;
+}
+
+.loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    margin: -10px 0 0 -10px;
+    border: 2px solid #fff;
+    border-top-color: transparent;
+    border-radius: 50%;
+    animation: spin 0.6s linear infinite;
 }

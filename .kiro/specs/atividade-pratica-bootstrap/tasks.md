@@ -13,111 +13,111 @@ Este plano implementa uma aplicação web responsiva com Bootstrap 5 para projet
   - Configurar GitHub Pages nas configurações do repositório
   - _Requisitos: 5.1, 5.2, 5.3, 5.4, 5.5_
 
-- [ ] 2. Implementar página de login (login.html)
-  - [ ] 2.1 Criar estrutura HTML5 com Bootstrap CDN
+- [x] 2. Implementar página de login (login.html)
+  - [x] 2.1 Criar estrutura HTML5 com Bootstrap CDN
     - Implementar template HTML com meta tags e Bootstrap 5.3.x
     - Adicionar formulário de login com campos usuário e senha
     - Incluir validação HTML5 nos campos obrigatórios
     - _Requisitos: 1.1, 1.2, 1.5_
   
-  - [ ] 2.2 Implementar responsividade da tela de login
+  - [x] 2.2 Implementar responsividade da tela de login
     - Configurar sistema de grid Bootstrap para diferentes telas
     - Aplicar classes responsivas (col-12, col-sm-8, col-md-6, col-lg-4)
     - Testar layout em mobile, tablet e desktop
     - _Requisitos: 1.4, 3.1, 3.2, 3.3, 3.4_
 
-- [ ] 3. Implementar funcionalidade de redirecionamento
-  - [ ] 3.1 Criar arquivo JavaScript (js/script.js)
+- [x] 3. Implementar funcionalidade de redirecionamento
+  - [x] 3.1 Criar arquivo JavaScript (js/script.js)
     - Implementar função handleLogin() para capturar submit do formulário
     - Adicionar preventDefault() para evitar comportamento padrão
     - Implementar redirecionamento para index.html após 500ms
     - _Requisitos: 6.1, 6.2, 6.3_
   
-  - [ ] 3.2 Adicionar feedback visual durante login
+  - [x] 3.2 Adicionar feedback visual durante login
     - Implementar spinner de carregamento no botão
     - Desabilitar botão durante processamento
     - Adicionar validação visual dos campos obrigatórios
     - _Requisitos: 6.4_
 
-- [ ] 4. Checkpoint - Validar página de login
+- [x] 4. Checkpoint - Validar página de login
   - Testar redirecionamento em Chrome, Firefox, Safari e Edge
   - Verificar responsividade usando DevTools (375px, 768px, 1366px)
   - Validar HTML5 em https://validator.w3.org/
   - Garantir que todos os testes passem, perguntar ao usuário se há dúvidas
 
-- [ ] 5. Implementar landing page (index.html)
-  - [ ] 5.1 Criar estrutura HTML com navegação Bootstrap
+- [x] 5. Implementar landing page (index.html)
+  - [x] 5.1 Criar estrutura HTML com navegação Bootstrap
     - Implementar navbar responsiva com menu hambúrguer
     - Criar seções: Hero, Sobre, Formação, Habilidades, Experiência, Contato
     - Adicionar navegação suave entre seções com links âncora
     - _Requisitos: 2.1, 2.2, 2.3, 2.4, 2.5, 2.6_
   
-  - [ ] 5.2 Implementar seção Hero com informações pessoais
+  - [x] 5.2 Implementar seção Hero com informações pessoais
     - Adicionar nome "Walter Gonçalves Baraúna Filho"
     - Incluir objetivo profissional e botões de call-to-action
     - Configurar layout responsivo com imagem de perfil
     - _Requisitos: 2.1, 2.3_
   
-  - [ ] 5.3 Implementar seções de conteúdo do currículo
+  - [x] 5.3 Implementar seções de conteúdo do currículo
     - Criar seção Formação (Técnico em Informática, Sistemas de Informação)
     - Implementar seção Habilidades (Git/Github, Python, Django, SQL, PostgreSQL, AWS, APIs)
     - Adicionar seção Experiência (Suprelogic Tecnologia)
     - _Requisitos: 2.4, 2.5, 2.6_
 
-- [ ] 6. Implementar responsividade completa da landing page
-  - [ ] 6.1 Configurar breakpoints Bootstrap
+- [x] 6. Implementar responsividade completa da landing page
+  - [x] 6.1 Configurar breakpoints Bootstrap
     - Aplicar classes responsivas em todas as seções
     - Implementar layout vertical para mobile (<768px)
     - Configurar layout horizontal para desktop (≥992px)
     - _Requisitos: 2.7, 2.8, 3.1, 3.2, 3.3, 3.4_
   
-  - [ ] 6.2 Otimizar navegação para diferentes dispositivos
+  - [x] 6.2 Otimizar navegação para diferentes dispositivos
     - Configurar navbar colapsável para mobile
     - Implementar scroll suave com offset para navbar fixa
     - Adicionar indicador de seção ativa na navegação
     - _Requisitos: 3.5_
 
-- [ ] 7. Implementar links sociais e contato
-  - [ ] 7.1 Adicionar links para redes sociais
+- [x] 7. Implementar links sociais e contato
+  - [x] 7.1 Adicionar links para redes sociais
     - Implementar links para Instagram e LinkedIn
     - Adicionar link para email (Gmail)
     - Configurar abertura em nova aba com rel="noopener noreferrer"
     - _Requisitos: 4.1, 4.2, 4.3, 4.4_
   
-  - [ ] 7.2 Estilizar botões sociais com ícones
+  - [x] 7.2 Estilizar botões sociais com ícones
     - Integrar Font Awesome via CDN
     - Criar botões circulares com cores específicas das redes
     - Adicionar efeitos hover e transições CSS
     - _Requisitos: 4.5_
 
-- [ ] 8. Implementar estilos personalizados (css/styles.css)
-  - [ ] 8.1 Criar variáveis CSS e estilos globais
+- [x] 8. Implementar estilos personalizados (css/styles.css)
+  - [x] 8.1 Criar variáveis CSS e estilos globais
     - Definir paleta de cores e tipografia personalizada
     - Implementar estilos para cards, botões e componentes
     - Adicionar animações e transições suaves
     - _Requisitos: 1.5, 3.5_
   
-  - [ ] 8.2 Implementar estilos responsivos personalizados
+  - [x] 8.2 Implementar estilos responsivos personalizados
     - Criar media queries para ajustes específicos
     - Otimizar espaçamento e tipografia por breakpoint
     - Adicionar estilos para impressão e acessibilidade
     - _Requisitos: 3.1, 3.2, 3.3, 3.4_
 
-- [ ] 9. Checkpoint - Validar landing page completa
+- [x] 9. Checkpoint - Validar landing page completa
   - Testar navegação entre todas as seções
   - Verificar links sociais abrem em nova aba
   - Validar responsividade em todos os breakpoints
   - Testar performance de carregamento (<3 segundos)
   - Garantir que todos os testes passem, perguntar ao usuário se há dúvidas
 
-- [ ] 10. Configurar CI/CD para GitHub Pages
-  - [ ] 10.1 Criar workflow de deploy automatizado
+- [x] 10. Configurar CI/CD para GitHub Pages
+  - [x] 10.1 Criar workflow de deploy automatizado
     - Criar arquivo .github/workflows/deploy.yml
     - Configurar validação automática de arquivos HTML, CSS e JS
     - Implementar deploy automático para GitHub Pages
     - _Requisitos: 5.6_
   
-  - [ ] 10.2 Configurar GitHub Pages
+  - [x] 10.2 Configurar GitHub Pages
     - Ativar GitHub Pages nas configurações do repositório
     - Configurar source como "GitHub Actions"
     - Testar URL de produção (https://usuario.github.io/projeto-bootstrap/)
