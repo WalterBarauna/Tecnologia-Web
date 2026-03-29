@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Criar Favicon</title>
+</head>
+<body>
+    <h1>Gerando favicon...</h1>
+    <canvas id="canvas" width="32" height="32"></canvas>
+    <script>
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+        
+        // Fundo azul
+        ctx.fillStyle = '#0d6efd';
+        ctx.fillRect(0, 0, 32, 32);
+        
+        // Letra W branca
+        ctx.fillStyle = '#ffffff';
+        ctx.font = 'bold 24px Arial';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText('W', 16, 17);
+        
+        // Converter para ICO e baixar
+        canvas.toBlob(function(blob) {
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = 'favicon.ico';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            URL.revokeObjectURL(url);
+            
+            document.body.innerHTML = '<h1 style="color: green;">✓ Favicon baixado!</h1><p>Mova o arquivo para assets/imagens/ e substitua o existente.</p>';
+        }, 'image/x-icon');
+    </script>
+</body>
+</html>

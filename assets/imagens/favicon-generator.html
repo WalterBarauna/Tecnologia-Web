@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerador de Favicon</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            text-align: center;
+        }
+        canvas {
+            border: 1px solid #ccc;
+            margin: 20px 0;
+        }
+        button {
+            background: #0d6efd;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        .instructions {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 20px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <h1>Gerador de Favicon</h1>
+    <p>Clique no botão para gerar e baixar o favicon.ico</p>
+    
+    <canvas id="canvas" width="32" height="32"></canvas>
+    
+    <div>
+        <button onclick="generateFavicon()">Gerar e Baixar Favicon</button>
+    </div>
+    
+    <div class="instructions">
+        <h3>Instruções:</h3>
+        <ol>
+            <li>Clique no botão "Gerar e Baixar Favicon"</li>
+            <li>O arquivo favicon.ico será baixado automaticamente</li>
+            <li>Mova o arquivo para a pasta <code>assets/imagens/</code></li>
+            <li>Substitua o arquivo existente se houver</li>
+        </ol>
+        <p><strong>Nota:</strong> O favicon gerado é uma letra "W" branca em fundo azul (#0d6efd)</p>
+    </div>
+
+    <script>
+        function generateFavicon() {
+            const canvas = document.getElementById('canvas');
+            const ctx = canvas.getContext('2d');
+            
+            // Fundo azul
+            ctx.fillStyle = '#0d6efd';
+            ctx.fillRect(0, 0, 32, 32);
+            
+            // Letra W branca
+            ctx.fillStyle = '#ffffff';
+            ctx.font = 'bold 24px Arial';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText('W', 16, 17);
+            
+            // Converter para blob e baixar
+            canvas.toBlob(function(blob) {
+                const url = URL.createObjectURL(blob);
+                const link = document.createElement('a');
+                link.href = url;
+                link.download = 'favicon.ico';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                URL.revokeObjectURL(url);
+                
+                alert('✓ Favicon gerado e baixado com sucesso!\n\nMova o arquivo para assets/imagens/');
+            }, 'image/x-icon');
+        }
+    </script>
+</body>
+</html>

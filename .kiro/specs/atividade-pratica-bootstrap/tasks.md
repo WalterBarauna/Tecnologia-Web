@@ -123,27 +123,27 @@ Este plano implementa uma aplicação web responsiva com Bootstrap 5 para projet
     - Testar URL de produção (https://usuario.github.io/projeto-bootstrap/)
     - _Requisitos: 7.1, 7.2_
 
-- [ ] 11. Validação e testes finais
-  - [ ] 11.1 Executar validação automática online
+- [x] 11. Validação e testes finais
+  - [x] 11.1 Executar validação automática online
     - Validar HTML5 em https://validator.w3.org/
     - Validar CSS3 em https://jigsaw.w3.org/css-validator/
     - Testar performance em https://pagespeed.web.dev/
     - _Requisitos: 7.4, 7.3_
   
-  - [ ] 11.2 Realizar testes manuais de compatibilidade
+  - [x] 11.2 Realizar testes manuais de compatibilidade
     - Testar em Chrome, Firefox, Safari e Edge
     - Verificar funcionamento em dispositivos móveis reais
     - Testar com JavaScript desabilitado (exceto redirecionamento)
     - _Requisitos: 7.2, 7.5_
 
 - [ ] 12. Finalização e documentação
-  - [ ] 12.1 Otimizar recursos e performance
+  - [x] 12.1 Otimizar recursos e performance
     - Adicionar favicon e meta tags de SEO
     - Otimizar imagens para web (< 500KB cada)
     - Verificar tamanho total do projeto (< 2MB)
     - _Requisitos: 7.3_
   
-  - [ ] 12.2 Preparar entrega acadêmica
+  - [x] 12.2 Preparar entrega acadêmica
     - Atualizar README.md com instruções de uso
     - Documentar estrutura do projeto e tecnologias utilizadas
     - Verificar funcionamento completo da URL de produção
