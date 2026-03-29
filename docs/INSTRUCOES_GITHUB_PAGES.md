@@ -45,6 +45,26 @@ git push -u origin main
 
 ## Passo 3: Configurar GitHub Pages
 
+### ⚠️ Importante: Escolha o método de deploy adequado
+
+**Se sua conta do GitHub tiver problemas de billing ou GitHub Actions bloqueado**, use o **Método 1 (Deploy Manual)**.
+Caso contrário, você pode usar o **Método 2 (Deploy Automático com GitHub Actions)**.
+
+### Método 1: Deploy Manual via Branch (Recomendado se Actions estiver bloqueado)
+
+1. No seu repositório no GitHub, clique na aba **"Settings"** (Configurações)
+2. No menu lateral esquerdo, clique em **"Pages"** (na seção "Code and automation")
+3. Na seção **"Build and deployment"**:
+   - **Source**: Selecione **"Deploy from a branch"**
+   - **Branch**: Selecione **"main"** e **"/ (root)"**
+   - Clique em **"Save"**
+4. Aguarde alguns minutos e o site estará disponível
+
+✅ **Vantagens**: Funciona mesmo com Actions bloqueado, simples e direto
+❌ **Desvantagens**: Não tem validação automática dos arquivos
+
+### Método 2: Deploy Automático com GitHub Actions (Requer Actions habilitado)
+
 1. No seu repositório no GitHub, clique na aba **"Settings"** (Configurações)
 2. No menu lateral esquerdo, clique em **"Pages"** (na seção "Code and automation")
 3. Na seção **"Build and deployment"**:
@@ -52,7 +72,19 @@ git push -u origin main
    - Não é necessário selecionar branch manualmente, o workflow fará isso automaticamente
 4. Clique em **"Save"** (se houver botão de salvar)
 
+✅ **Vantagens**: Validação automática, deploy automatizado
+❌ **Desvantagens**: Requer GitHub Actions habilitado (pode ter problemas de billing)
+
 ## Passo 4: Verificar o Deploy
+
+### Se você usou o Método 1 (Deploy Manual):
+
+1. Aguarde 2-3 minutos após fazer push
+2. Vá para **Settings → Pages**
+3. Você verá uma mensagem indicando que o site está sendo publicado
+4. Quando estiver pronto, aparecerá: "Your site is live at https://SEU-USUARIO.github.io/projeto-bootstrap/"
+
+### Se você usou o Método 2 (GitHub Actions):
 
 1. Vá para a aba **"Actions"** no seu repositório
 2. Você verá o workflow **"Deploy to GitHub Pages"** em execução
@@ -129,9 +161,20 @@ git commit -m "Descrição das alterações"
 git push
 ```
 
-O GitHub Actions automaticamente executará o workflow e atualizará o site em alguns minutos.
+**Se você usou Deploy Manual (Método 1)**: O site será atualizado automaticamente em 2-3 minutos após o push.
+
+**Se você usou GitHub Actions (Método 2)**: O GitHub Actions automaticamente executará o workflow e atualizará o site em alguns minutos.
 
 ## Solução de Problemas
+
+### Erro: "The job was not started because your account is locked due to a billing issue"
+Este erro ocorre quando o GitHub Actions está bloqueado na sua conta por questões de billing.
+
+**Solução**: Use o **Método 1 (Deploy Manual via Branch)** descrito no Passo 3.
+1. Vá em Settings → Pages
+2. Source: "Deploy from a branch"
+3. Branch: "main" / "/ (root)"
+4. Save
 
 ### Erro: "login.html não encontrado"
 - Verifique se o arquivo existe na raiz do projeto
