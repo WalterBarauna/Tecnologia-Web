@@ -35,38 +35,53 @@
     <link rel="shortcut icon" type="image/x-icon" href="assets/imagens/favicon.ico">
     <link rel="apple-touch-icon" href="assets/imagens/favicon.ico">
 </head>
-<body class="bg-light">
-    <div class="container-fluid vh-100 d-flex align-items-center justify-content-center login-container">
-        <div class="row w-100">
-            <div class="col-12 col-sm-8 col-md-6 col-lg-4 mx-auto">
-                <div class="card shadow-sm login-card">
-                    <div class="card-body p-4">
+<body>
+    <div class="container-fluid vh-100 p-0">
+        <div class="row g-0 h-100">
+            <!-- Lado Esquerdo - Logo e Branding -->
+            <div class="col-lg-6 d-none d-lg-flex login-left-panel">
+                <div class="d-flex flex-column align-items-center justify-content-center w-100 p-5">
+                    <img src="assets/imagens/icon-cv.png" alt="Logo CV" class="login-logo mb-4">
+                    <h1 class="login-brand-title mb-3">CURRÍCULO</h1>
+                    <p class="login-brand-subtitle text-muted">Portfólio Profissional</p>
+                </div>
+            </div>
+            
+            <!-- Lado Direito - Formulário de Login -->
+            <div class="col-lg-6 login-right-panel">
+                <div class="d-flex align-items-center justify-content-center h-100 p-4">
+                    <div class="login-form-container">
+                        <!-- Logo mobile -->
+                        <div class="text-center mb-4 d-lg-none">
+                            <img src="assets/imagens/icon-cv.png" alt="Logo CV" class="login-logo-mobile mb-3">
+                        </div>
+                        
                         <div class="text-center mb-4">
-                            <h2 class="card-title">Acesso ao Currículo</h2>
-                            <p class="text-muted">Walter Gonçalves Baraúna Filho</p>
+                            <h2 class="login-title">Bem-vindo</h2>
+                            <p class="login-subtitle">Acesse sua conta para continuar</p>
                         </div>
                         
                         <form id="loginForm" novalidate>
                             <div class="mb-3">
-                                <label for="usuario" class="form-label">Usuário</label>
-                                <input type="text" class="form-control" id="usuario" name="usuario" 
-                                       placeholder="Digite seu usuário" required>
+                                <label for="usuario" class="form-label-custom">E-MAIL</label>
+                                <input type="text" class="form-control-custom" id="usuario" name="usuario" 
+                                       placeholder="seuemail@exemplo.com" required>
                                 <div class="invalid-feedback">
                                     Por favor, insira um usuário válido.
                                 </div>
                             </div>
                             
-                            <div class="mb-3">
-                                <label for="senha" class="form-label">Senha</label>
-                                <input type="password" class="form-control" id="senha" name="senha" 
-                                       placeholder="Digite sua senha" required>
+                            <div class="mb-4">
+                                <label for="senha" class="form-label-custom">SENHA</label>
+                                <input type="password" class="form-control-custom" id="senha" name="senha" 
+                                       placeholder="••••••••" required>
                                 <div class="invalid-feedback">
                                     Por favor, insira uma senha.
                                 </div>
                             </div>
                             
-                            <div class="d-grid">
-                                <button type="submit" class="btn btn-primary btn-lg">
+                            <div class="d-grid mb-3">
+                                <button type="submit" class="btn-login">
                                     Entrar
                                 </button>
                             </div>
@@ -75,8 +90,8 @@
                         <div id="login-error" class="mt-3" style="display: none;"></div>
                         
                         <div class="text-center mt-4">
-                            <small class="text-muted">
-                                Sistema de demonstração acadêmica
+                            <small class="login-footer-text">
+                                © 2024 Walter Baraúna
                             </small>
                         </div>
                     </div>

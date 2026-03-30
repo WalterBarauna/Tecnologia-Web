@@ -104,60 +104,183 @@ section {
     scroll-margin-top: 70px;
 }
 
-/* ===== PÁGINA DE LOGIN ===== */
-.login-container {
-    min-height: 100vh;
-    background: linear-gradient(135deg, var(--cor-primaria) 0%, #0056b3 100%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+/* ===== PÁGINA DE LOGIN - DESIGN PROFISSIONAL ===== */
+
+/* Layout Principal */
+.login-left-panel {
+    background-color: #f5f5f5;
+    position: relative;
 }
 
-.login-card {
+.login-right-panel {
+    background: linear-gradient(135deg, #0d5f6f 0%, #1a7f8e 100%);
+    position: relative;
+}
+
+/* Logo e Branding - Lado Esquerdo */
+.login-logo {
+    width: 300px;
+    height: auto;
+    margin-bottom: 2rem;
+    filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
+}
+
+.login-brand-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #0d5f6f;
+    letter-spacing: 2px;
+    margin-bottom: 0.5rem;
+}
+
+.login-brand-subtitle {
+    font-size: 1.1rem;
+    color: #6c757d;
+    font-weight: 400;
+}
+
+/* Container do Formulário */
+.login-form-container {
+    width: 100%;
+    max-width: 400px;
+    padding: 2rem;
+}
+
+/* Logo Mobile */
+.login-logo-mobile {
+    width: 150px;
+    height: auto;
+}
+
+/* Títulos do Formulário */
+.login-title {
+    color: #ffffff;
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.login-subtitle {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.95rem;
+    margin-bottom: 2rem;
+}
+
+/* Labels Customizados */
+.form-label-custom {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+/* Inputs Customizados */
+.form-control-custom {
+    width: 100%;
+    padding: 0.875rem 1rem;
+    font-size: 0.95rem;
+    background-color: rgba(255, 255, 255, 0.95);
+    border: 2px solid transparent;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    color: #212529;
+}
+
+.form-control-custom::placeholder {
+    color: #adb5bd;
+}
+
+.form-control-custom:focus {
+    outline: none;
+    background-color: #ffffff;
+    border-color: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.1);
+}
+
+.form-control-custom:hover {
+    background-color: #ffffff;
+}
+
+/* Botão de Login */
+.btn-login {
+    width: 100%;
+    padding: 0.875rem;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #0d5f6f;
+    background-color: rgba(255, 255, 255, 0.95);
     border: none;
-    border-radius: var(--borda-radius-grande);
-    box-shadow: var(--sombra-grande);
-    transition: all var(--transicao-normal);
-    background-color: var(--bg-white);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
-.login-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.2);
-}
-
-.login-card .card-body {
-    padding: var(--espacamento-xl);
-}
-
-.login-card .card-title {
-    color: var(--cor-primaria);
-    font-weight: var(--fonte-peso-bold);
-}
-
-.login-card .form-control {
-    border-radius: var(--borda-radius-pequeno);
-    padding: var(--espacamento-md);
-    border: 1px solid #dee2e6;
-    transition: all var(--transicao-normal);
-}
-
-.login-card .form-control:focus {
-    border-color: var(--cor-primaria);
-    box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
-}
-
-.login-card .btn-primary {
-    background-color: var(--cor-primaria);
-    border: none;
-    padding: var(--espacamento-md);
-    font-weight: var(--fonte-peso-bold);
-    transition: all var(--transicao-normal);
-}
-
-.login-card .btn-primary:hover {
-    background-color: #0056b3;
+.btn-login:hover {
+    background-color: #ffffff;
     transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.btn-login:active {
+    transform: translateY(0);
+}
+
+/* Footer do Login */
+.login-footer-text {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.85rem;
+}
+
+/* Mensagens de Erro */
+#login-error .alert {
+    background-color: rgba(220, 53, 69, 0.9);
+    border: none;
+    color: #ffffff;
+    border-radius: 8px;
+}
+
+/* Responsividade */
+@media (max-width: 991px) {
+    .login-right-panel {
+        background: linear-gradient(135deg, #0d5f6f 0%, #1a7f8e 100%);
+    }
+    
+    .login-form-container {
+        max-width: 500px;
+    }
+    
+    .login-title {
+        font-size: 1.75rem;
+    }
+}
+
+@media (max-width: 575px) {
+    .login-form-container {
+        padding: 1.5rem;
+    }
+    
+    .login-title {
+        font-size: 1.5rem;
+    }
+    
+    .login-subtitle {
+        font-size: 0.9rem;
+    }
+    
+    .form-control-custom {
+        padding: 0.75rem;
+        font-size: 0.9rem;
+    }
+    
+    .btn-login {
+        padding: 0.75rem;
+        font-size: 0.95rem;
+    }
 }
 
 /* ===== LANDING PAGE ===== */
