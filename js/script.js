@@ -17,23 +17,40 @@ function handleLogin(event) {
     
     // Feedback visual
     const button = event.target.querySelector('button[type="submit"]');
+    const textoOriginal = button.innerHTML;
     button.innerHTML = '<span class="spinner-border spinner-border-sm" role="status"></span> Entrando...';
     button.disabled = true;
     
-    // Simula processamento e redireciona
+    // Simula processamento
     setTimeout(() => {
-        window.location.href = 'portfolio.html';
+        Swal.fire({
+            icon: 'success',
+            title: 'Login realizado!',
+            text: 'Redirecionando para o portfólio...',
+            timer: 1500,
+            showConfirmButton: false,
+            confirmButtonColor: '#2d2d7f',
+            customClass: {
+                popup: 'swal-popup-custom',
+                title: 'swal-title-custom',
+                htmlContainer: 'swal-text-custom'
+            }
+        }).then(() => {
+            window.location.href = 'portfolio.html';
+        });
     }, CONFIG.tempoRedirecionamento);
 }
 
 function validarCampos() {
-    const usuario = document.getElementById('usuario')?.value.trim();
+    const email = document.getElementById('email')?.value.trim();
     const senha = document.getElementById('senha')?.value.trim();
     
     const erros = [];
     
-    if (!usuario) {
-        erros.push('Campo usuário é obrigatório');
+    if (!email) {
+        erros.push('Campo e-mail é obrigatório');
+    } else if (!validarEmail(email)) {
+        erros.push('Por favor, insira um e-mail válido');
     }
     
     if (!senha) {
@@ -46,17 +63,26 @@ function validarCampos() {
     };
 }
 
+function validarEmail(email) {
+    // Regex para validação de e-mail
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return regex.test(email);
+}
+
 function mostrarErros(erros) {
-    const errorDiv = document.getElementById('login-error');
-    if (errorDiv) {
-        errorDiv.innerHTML = `
-            <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                ${erros.join('<br>')}
-                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-            </div>
-        `;
-        errorDiv.style.display = 'block';
-    }
+    Swal.fire({
+        icon: 'error',
+        title: 'Erro de validação',
+        html: erros.join('<br>'),
+        confirmButtonText: 'OK',
+        confirmButtonColor: '#2d2d7f',
+        background: '#ffffff',
+        customClass: {
+            popup: 'swal-popup-custom',
+            title: 'swal-title-custom',
+            htmlContainer: 'swal-text-custom'
+        }
+    });
 }
 
 // ===== FUNÇÕES DA LANDING PAGE =====
