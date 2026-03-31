@@ -17,7 +17,6 @@ function handleLogin(event) {
     
     // Feedback visual
     const button = event.target.querySelector('button[type="submit"]');
-    const textoOriginal = button.innerHTML;
     button.innerHTML = '<span class="spinner-border spinner-border-sm" role="status"></span> Entrando...';
     button.disabled = true;
     
@@ -55,6 +54,11 @@ function validarCampos() {
     
     if (!senha) {
         erros.push('Campo senha é obrigatório');
+    } else {
+        const validacaoSenha = validarSenha(senha);
+        if (!validacaoSenha.valido) {
+            erros.push(...validacaoSenha.erros);
+        }
     }
     
     return {
@@ -67,6 +71,35 @@ function validarEmail(email) {
     // Regex para validação de e-mail
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return regex.test(email);
+}
+
+function validarSenha(senha) {
+    const erros = [];
+    
+    // Mínimo 8 caracteres
+    if (senha.length < 8) {
+        erros.push('A senha deve ter no mínimo 8 caracteres');
+    }
+    
+    // Pelo menos uma letra maiúscula
+    if (!/[A-Z]/.test(senha)) {
+        erros.push('A senha deve conter pelo menos uma letra maiúscula');
+    }
+    
+    // Pelo menos um número
+    if (!/[0-9]/.test(senha)) {
+        erros.push('A senha deve conter pelo menos um número');
+    }
+    
+    // Pelo menos um caractere especial
+    if (!/[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(senha)) {
+        erros.push('A senha deve conter pelo menos um caractere especial (!@#$%^&*()_+-=[]{};\':"|,.<>/?)');
+    }
+    
+    return {
+        valido: erros.length === 0,
+        erros: erros
+    };
 }
 
 function mostrarErros(erros) {
@@ -175,6 +208,87 @@ document.addEventListener('DOMContentLoaded', function() {
     const loginForm = document.getElementById('loginForm');
     if (loginForm) {
         loginForm.addEventListener('submit', handleLogin);
+        
+        // Adicionar validação em tempo real da senha
+        const senhaInput = document.getElementById('senha');
+        const senhaRequisitos = document.getElementById('senhaRequisitos');
+        
+        if (senhaInput && senhaRequisitos) {
+            senhaInput.addEventListener('focus', function() {
+                senhaRequisitos.style.display = 'block';
+            });
+            
+            senhaInput.addEventListener('blur', function() {
+                senhaRequisitos.style.display = 'none';
+            });
+            
+            senhaInput.addEventListener('input', function() {
+                const senha = this.value;
+                
+                // Validar tamanho
+                const reqTamanho = document.getElementById('req-tamanho');
+                if (senha.length >= 8) {
+                    reqTamanho.classList.add('requisito-valido');
+                    reqTamanho.querySelector('.requisito-icon').textContent = '✓';
+                } else {
+                    reqTamanho.classList.remove('requisito-valido');
+                    reqTamanho.querySelector('.requisito-icon').textContent = '✗';
+                }
+                
+                // Validar letra maiúscula
+                const reqMaiuscula = document.getElementById('req-maiuscula');
+                if (/[A-Z]/.test(senha)) {
+                    reqMaiuscula.classList.add('requisito-valido');
+                    reqMaiuscula.querySelector('.requisito-icon').textContent = '✓';
+                } else {
+                    reqMaiuscula.classList.remove('requisito-valido');
+                    reqMaiuscula.querySelector('.requisito-icon').textContent = '✗';
+                }
+                
+                // Validar número
+                const reqNumero = document.getElementById('req-numero');
+                if (/[0-9]/.test(senha)) {
+                    reqNumero.classList.add('requisito-valido');
+                    reqNumero.querySelector('.requisito-icon').textContent = '✓';
+                } else {
+                    reqNumero.classList.remove('requisito-valido');
+                    reqNumero.querySelector('.requisito-icon').textContent = '✗';
+                }
+                
+                // Validar caractere especial
+                const reqEspecial = document.getElementById('req-especial');
+                if (/[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(senha)) {
+                    reqEspecial.classList.add('requisito-valido');
+                    reqEspecial.querySelector('.requisito-icon').textContent = '✓';
+                } else {
+                    reqEspecial.classList.remove('requisito-valido');
+                    reqEspecial.querySelector('.requisito-icon').textContent = '✗';
+                }
+            });
+        }
+        
+        // Toggle de visualização de senha
+        const togglePassword = document.getElementById('togglePassword');
+        const eyeIcon = document.getElementById('eyeIcon');
+        const eyeOffIcon = document.getElementById('eyeOffIcon');
+        
+        if (togglePassword && senhaInput && eyeIcon && eyeOffIcon) {
+            togglePassword.addEventListener('click', function() {
+                const type = senhaInput.getAttribute('type') === 'password' ? 'text' : 'password';
+                senhaInput.setAttribute('type', type);
+                
+                // Alternar ícones
+                if (type === 'text') {
+                    eyeIcon.style.display = 'none';
+                    eyeOffIcon.style.display = 'block';
+                    togglePassword.setAttribute('aria-label', 'Ocultar senha');
+                } else {
+                    eyeIcon.style.display = 'block';
+                    eyeOffIcon.style.display = 'none';
+                    togglePassword.setAttribute('aria-label', 'Mostrar senha');
+                }
+            });
+        }
     }
     
     // Verificar se estamos na landing page

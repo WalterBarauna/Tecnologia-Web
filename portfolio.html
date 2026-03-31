@@ -77,21 +77,39 @@
     </nav>
     
     <!-- Hero Section -->
-    <section id="home" class="hero-section bg-primary text-white py-5">
+    <section id="home" class="hero-section bg-primary text-white" role="banner" aria-label="Apresentação principal">
         <div class="container">
-            <div class="row align-items-center min-vh-100">
-                <div class="col-12 col-lg-6 mb-4 mb-lg-0">
-                    <h1 class="display-4 fw-bold mb-3">Walter Gonçalves Baraúna Filho</h1>
-                    <p class="lead mb-4">Desenvolvedor em busca de oportunidades para aplicar conhecimentos em tecnologia e contribuir com soluções inovadoras.</p>
-                    <div class="d-flex flex-wrap gap-3 justify-content-center justify-content-lg-start">
-                        <a href="#contato" class="btn btn-light btn-lg">Entre em Contato</a>
-                        <a href="#sobre" class="btn btn-outline-light btn-lg">Saiba Mais</a>
+            <div class="row align-items-center hero-content">
+                <div class="col-12 col-lg-7 mb-4 mb-lg-0 hero-text">
+                    <p class="hero-tagline mb-3">
+                        <i class="fas fa-code me-2" aria-hidden="true"></i>Desenvolvedor Full Stack
+                    </p>
+                    <h1 class="hero-title mb-4">
+                        Olá, sou <span class="hero-name">Walter Baraúna</span>
+                    </h1>
+                    <p class="hero-subtitle mb-4">
+                        Transformando ideias em código. Especializado em <strong>Python</strong>, <strong>Django</strong> e <strong>AWS</strong>, 
+                        criando soluções que fazem a diferença.
+                    </p>
+                    <div class="hero-cta d-flex flex-wrap gap-3">
+                        <a href="#contato" class="btn btn-light btn-lg">
+                            <i class="fas fa-envelope me-2" aria-hidden="true"></i>Entre em Contato
+                        </a>
+                        <a href="#experiencia" class="btn btn-outline-light btn-lg">
+                            <i class="fas fa-briefcase me-2" aria-hidden="true"></i>Ver Experiência
+                        </a>
                     </div>
                 </div>
-                <div class="col-12 col-lg-6 text-center">
-                    <div class="rounded-circle mx-auto" style="width: 400px; height: 400px; overflow: hidden; position: relative;">
-                        <!-- <i class="fas fa-user fa-8x text-primary"></i> -->
-                        <img src="assets/imagens/foto1.png" alt="Foto de perfil" style="width: 100%; height: 100%; object-fit: cover; object-position: center center; display: block; transform: scale(1.5);"/> 
+                <div class="col-12 col-lg-5 text-center hero-image-wrapper">
+                    <div class="hero-image-container">
+                        <img 
+                            src="assets/imagens/foto1.png" 
+                            alt="Foto de perfil de Walter Gonçalves Baraúna Filho"
+                            class="hero-profile-image"
+                            loading="eager"
+                            width="320"
+                            height="320"
+                        /> 
                     </div>
                 </div>
             </div>
@@ -228,10 +246,10 @@
                         <a href="mailto:walter.barauna@gmail.com" class="botao-social email text-white link-externo" aria-label="Enviar email para Walter Baraúna">
                             <i class="fas fa-envelope"></i>
                         </a>
-                        <a href="https://linkedin.com/in/walter-barauna" class="botao-social linkedin text-white link-externo" target="_blank" rel="noopener noreferrer" aria-label="Visitar perfil no LinkedIn">
+                        <a href="https://www.linkedin.com/in/waltergoncalvesfilho/" class="botao-social linkedin text-white link-externo" target="_blank" rel="noopener noreferrer" aria-label="Visitar perfil no LinkedIn">
                             <i class="fab fa-linkedin-in"></i>
                         </a>
-                        <a href="https://instagram.com/walter.barauna" class="botao-social instagram text-white link-externo" target="_blank" rel="noopener noreferrer" aria-label="Visitar perfil no Instagram">
+                        <a href="https://www.instagram.com/waltergoncalves.filho" class="botao-social instagram text-white link-externo" target="_blank" rel="noopener noreferrer" aria-label="Visitar perfil no Instagram">
                             <i class="fab fa-instagram"></i>
                         </a>
                     </div>
